@@ -1,0 +1,36 @@
+listen_ip: "127.0.0.1"
+listen_port: 8080
+
+amqp_brokers:
+  - name: "rabbitmq1"
+    host: "rabbitmq"
+    port: 5672
+    user: "guest"
+    password: "guest"
+    vhost: "/"
+
+kafka_brokers:
+  - name: "kafka1"
+    hosts:
+      - host: "kafka_1"
+        port: 5672
+
+      - host: "kafka_2"
+        port: 5672
+
+routes:
+  - conditions:
+      - field: "messageType"
+        value: "createUser"
+    route_to:
+      - broker: "rabbitmq1"
+        queue: "createUser"
+      - broker: "kafka1"
+        queue: "createUser"
+
+  - conditions:
+    - field: "messageType"
+      value: "authUser"
+    route_to:
+      - broker: "rabbitmq1"
+        queue: "authUser"

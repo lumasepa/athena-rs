@@ -1,0 +1,34 @@
+[package]
+name = "athena-rs"
+version = "0.1.0"
+authors = ["Sergio Medina <lumasepa@gmail.com>"]
+
+[dependencies]
+env_logger = "*"
+
+uuid = { version = "0.4", features = ["v4"] }
+
+try_opt = "0.1.1"
+
+futures = "0.1.13"
+tokio-core = "0.1.7"
+
+tk-http = "0.2.1"
+
+lapin-futures = "0.8.2"
+#rdkafka = "0.9.1"
+
+serde_json = "1.0.2"
+serde_yaml = "0.7"
+
+time = "0.1.37"
+
+tk-bufstream = "*"
+tk-listen = "0.1.0"
+netbuf = "*"
+
+clippy = {version = "*", optional = true}
+
+[features]
+
+default = []
